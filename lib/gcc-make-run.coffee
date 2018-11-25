@@ -135,7 +135,7 @@ module.exports = GccMakeRun =
       if !@shouldUncondBuild() && @isExeUpToDate(info)
         @run(info)
       else
-        cmd = "\"#{compiler}\" #{cflags} \"#{info.base}\" -o \"#{info.exe}\" #{ldlibs}"
+        cmd = "\"#{compiler}\" #{cflags} \".\\*.cpp\" -o \"#{info.exe}\" #{ldlibs}"
         atom.notifications.addInfo('gcc-make-run: Running Command...', { detail: cmd })
         exec(cmd , { cwd: info.dir }, @onBuildFinished.bind(@, info))
 
